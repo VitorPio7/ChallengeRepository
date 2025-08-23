@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from "cors";
 import mongoose from 'mongoose';
-import taskRoutes from './routes/taskRoutes';
+import taskRoutes from './routes/taskRoutes.js';
 
 const app = express();
 const porta = 5000;
