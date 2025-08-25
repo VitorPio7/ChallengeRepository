@@ -9,15 +9,15 @@ const taskSchema = new mongoose.Schema({
         minLength: [2, "É necessário colocar no mínimo 2 caracteres."]
     },
     inicio: {
-        type:Date, 
+        type:String, 
         required:true
     },
     conclusao: {
-        type:Date, 
+        type:String, 
         required:[true, "Você precisa passar um data de conclusão"]
     },
     custoEstimado: {
-        type:Boolean, 
+        type:Number, 
         required:[true, "Você precisa passar um custo estimado."]
     },
     statusTarefa:{

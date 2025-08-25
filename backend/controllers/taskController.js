@@ -5,7 +5,7 @@ import catchAsync from "../utils/catchAsync.js";
 export const getTasks = catchAsync(async (req, res, next)=>{
     const tasks = await Task.find();
     if (!tasks ||tasks.length === 0) {
-        return next(new AppError('Não existe tarefas!', 404))
+        return next(new AppError('Não existe tarefa!', 404))
     }
     res.status(200).json({
         status: 'success',
@@ -31,8 +31,10 @@ export const getTask = catchAsync(async (req, res, next)=> {
     })
 })
 export const createTask = catchAsync(async (req, res) =>{
-    const { title, description} = req.body;
-    const task = new Task({title, description});
+    console.log(req.body)
+    const { titulo, inicio, conclusao, custoEstimado, statusTarefa} = req.body;
+   
+    const task = new Task({ titulo, inicio, conclusao, custoEstimado, statusTarefa });
     const newTask = await task.save();
     res.status(201).json({
         status: 'success',
