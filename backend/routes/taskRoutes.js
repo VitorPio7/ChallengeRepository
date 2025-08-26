@@ -24,8 +24,8 @@ router.get("/:id",
 router.post("/",
     [
       body("titulo").notEmpty().isString(),
-      body("inicio").notEmpty().isISO8601().withMessage("Data inválida"),
-      body("conclusao").notEmpty().isISO8601().withMessage("Data inválida"),
+      body("inicio").notEmpty().withMessage("Data inválida"),
+      body("conclusao").notEmpty().withMessage("Data inválida"),
       body("custoEstimado").notEmpty().isNumeric(),
       body("statusTarefa").notEmpty().isString()  
     ], 
@@ -37,7 +37,7 @@ router.put("/:id",
     [
      param("id").isMongoId().withMessage("ID inválido"),
      body("titulo").notEmpty().isString(),
-     body("inicio").notEmpty().isISO6391(),
+     body("inicio").notEmpty(),
      body("conclusao").notEmpty().isString(),
      body("custoEstimado").notEmpty().isNumeric(),
      body("statusTarefa").notEmpty().isString()

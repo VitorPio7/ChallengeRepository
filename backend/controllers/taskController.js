@@ -38,7 +38,6 @@ export const createTask = catchAsync(async (req, res) =>{
     const newTask = await task.save();
     res.status(201).json({
         status: 'success',
-        results: newTask.length,
         data:{
             task
         }
