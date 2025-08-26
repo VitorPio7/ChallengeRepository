@@ -1,6 +1,7 @@
 import express from 'express';
 import { getTasks, createTask, updateTask, deleteTask, getTask } from '../controllers/taskController.js';
 import { validationResult, body, param } from "express-validator";
+import { addComentario, getComments } from "../controllers/comentarioController.js"
 const router = express.Router();
 
 const validaet = (req,res,next) => {
@@ -52,5 +53,23 @@ router.delete("/:id",
      ],
     validaet,
     deleteTask);
+
+
+router.post("/:id/comentarios",
+    [
+        param("id").isMongoId().withMessage("ID inválido"),
+        body("autor").notEmpty().isString(),
+        body("texto").notEmpty().isString() 
+    ],
+    validaet,
+    addComentario
+
+)   
+router.get("/:id/comentarios", 
+    [
+        param("id").isMongoId().withMessage("ID inválido"),
+    ],
+     validaet,
+     getComments) 
 
 export default router;
